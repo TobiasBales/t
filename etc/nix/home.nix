@@ -86,6 +86,8 @@ in {
       GOPATH = "$HOME";
 
       PATH = "$HOME/bin:$PATH";
+
+      DOKKU_HOST="prettyrandom.net";
     };
     # envExtra
     # profileExtra

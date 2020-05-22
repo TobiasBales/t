@@ -11,6 +11,16 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 
 typeset WORDCHARS="*?_-.~[]=&;!#$%^(){}<>"
 
+function t {
+  PROJECT=$(basename $(pwd))
+  SESSION=$(tmux ls | grep "${PROJECT}")
+  if [[ -z "${SESSION}" ]]; then
+    tmux new -s "${PROJECT}"
+  else
+    tmux attach -t "${PROJECT}"
+  fi
+}
+
 if [ -f ~/.nix-profile/etc/profile.d/nix.sh ]; then
   source ~/.nix-profile/etc/profile.d/nix.sh
 fi

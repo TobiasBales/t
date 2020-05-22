@@ -1,9 +1,16 @@
 {
   ls = "ls --color=auto -F";
   ll = "ls -l";
-  g = "git";
+
+  tn="tmux new -s ";
+  ta="tmux attach -t ";
+  tl="tmux ls";
+
+  dokku="$HOME/.dokku/contrib/dokku_client.sh";
+
   cat = "bat";
 
+  g = "git";
   ga = "git add";
   gaa = "git add --all";
   gapa = "git add --patch";

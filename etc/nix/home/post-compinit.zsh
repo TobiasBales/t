@@ -1,0 +1,19 @@
+autoload -Uz promptinit
+promptinit
+# zsh-mime-setup
+autoload colors
+colors
+autoload -Uz zmv # move function
+autoload -Uz zed # edit functions within zle
+zle_highlight=(isearch:underline)
+
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|?=** r:|?=**'
+
+typeset WORDCHARS="*?_-.~[]=&;!#$%^(){}<>"
+
+PROMPT='%~ %# '
+
+if [ -f ~/.nix-profile/etc/profile.d/nix.sh ]; then
+  source ~/.nix-profile/etc/profile.d/nix.sh
+fi
+

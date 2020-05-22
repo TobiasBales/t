@@ -11,9 +11,8 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 
 typeset WORDCHARS="*?_-.~[]=&;!#$%^(){}<>"
 
-PROMPT='%~ %# '
-
 if [ -f ~/.nix-profile/etc/profile.d/nix.sh ]; then
   source ~/.nix-profile/etc/profile.d/nix.sh
 fi
 
+eval "$(starship init zsh)"

@@ -139,5 +139,9 @@ in {
       vim-fugitive # Gblame
     ];
   };
+
+  programs.starship = {
+    enable = true;
+  };
 }
 

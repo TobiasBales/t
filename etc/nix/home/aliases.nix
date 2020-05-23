@@ -6,6 +6,8 @@
   ta="tmux attach -t ";
   tl="tmux ls";
 
+  man="tldr";
+
   dokku="$HOME/.dokku/contrib/dokku_client.sh";
 
   cat = "bat";

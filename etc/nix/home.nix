@@ -28,6 +28,7 @@ in {
     onefetch
     overmind
     pwgen
+    ripgrep
     shellcheck
     tldr
   ];

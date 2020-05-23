@@ -1,13 +1,13 @@
 { config, pkgs, lib, ... }:
 
 let
-  callPackage = pkgs.callPackage;
-
   relativeXDGConfigPath = ".config";
   relativeXDGDataPath = ".local/share";
   relativeXDGCachePath = ".cache";
-
+  osConfigFile = if builtins.currentSystem == "x86_64-linux" then ./linux.nix else ./darwin.nix;
 in {
+  imports = [ osConfigFile ];
+
   home.packages = with pkgs; [
     awscli
     docker-compose
@@ -27,10 +27,8 @@ in {
     lefthook
     onefetch
     overmind
-    pinentry_mac
     pwgen
     shellcheck
-    terminal-notifier
     tldr
   ];
 

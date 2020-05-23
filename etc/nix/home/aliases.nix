@@ -1,5 +1,5 @@
 {
-  ls = "ls --color=auto -F";
+  ls = "exa";
   ll = "ls -l";
 
   tn="tmux new -s ";

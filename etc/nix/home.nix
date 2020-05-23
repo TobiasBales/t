@@ -8,7 +8,31 @@ let
   relativeXDGCachePath = ".cache";
 
 in {
-  home.packages = [ ];
+  home.packages = with pkgs; [
+    awscli
+    docker-compose
+    exa
+    git
+    gitAndTools.diff-so-fancy
+    gitAndTools.gh
+    gitAndTools.git-absorb
+    gitAndTools.git-interactive-rebase-tool
+    gitAndTools.hub
+    gitAndTools.tig
+    global
+    go
+    golangci-lint
+    jq
+    ktlint
+    lefthook
+    onefetch
+    overmind
+    pinentry_mac
+    pwgen
+    shellcheck
+    terminal-notifier
+    tldr
+  ];
 
   xdg.enable = true;
   xdg.configHome = "/Users/tobias/${relativeXDGConfigPath}";

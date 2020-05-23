@@ -1,6 +1,6 @@
 {
   ls = "exa";
-  ll = "ls -l";
+  ll = "exa -l";
 
   tn="tmux new -s ";
   ta="tmux attach -t ";

@@ -13,7 +13,7 @@ printTitle() {
   echo ""
 }
 
-CONFIG_DIRECTORY=/t
+CONFIG_DIRECTORY="${1:-/t}"
 CONFIG_GIT_REMOTE=git@github.com:TobiasBales/t.git
 
 GROUP=$(id -gn)
@@ -40,7 +40,7 @@ fi
 # fi
 
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
-export HOME_MANAGER_CONFIG=/t/etc/nix/home.nix
+export HOME_MANAGER_CONFIG="${CONFIG_DIRECTORY}/etc/nix/home.nix"
 
 if [ -z "$(command -v home-manager)" ]; then
   printTitle "Home manager not found, installing"
@@ -51,7 +51,7 @@ if [ -z "$(command -v home-manager)" ]; then
 fi
 
 # printTitle "Pulling latests changes"
-# git -C /t pull origin master
+# git -C "${CONFIG_DIRECTORY} pull origin master
 
 printTitle "Switching to new generation"
 home-manager switch

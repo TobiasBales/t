@@ -35,10 +35,6 @@ if [ -z "$(command -v nix)" ]; then
   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
 
-# if [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
-  # source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-# fi
-
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 export HOME_MANAGER_CONFIG="${CONFIG_DIRECTORY}/etc/nix/home.nix"
 

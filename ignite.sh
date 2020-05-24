@@ -35,10 +35,6 @@ if [ -z "$(command -v nix)" ]; then
   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
 
-# if [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
-  # source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-# fi
-
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 export HOME_MANAGER_CONFIG="${CONFIG_DIRECTORY}/etc/nix/home.nix"
 
@@ -50,8 +46,10 @@ if [ -z "$(command -v home-manager)" ]; then
   nix-shell '<home-manager>' -A install
 fi
 
-# printTitle "Pulling latests changes"
-# git -C "${CONFIG_DIRECTORY} pull origin master
+if [ "$(git branch --show-current)" == "master" ]; then
+  printTitle "Pulling latests changes"
+  git -C "${CONFIG_DIRECTORY}" pull origin master
+fi
 
 printTitle "Switching to new generation"
 home-manager switch

@@ -50,8 +50,10 @@ if [ -z "$(command -v home-manager)" ]; then
   nix-shell '<home-manager>' -A install
 fi
 
-# printTitle "Pulling latests changes"
-# git -C "${CONFIG_DIRECTORY} pull origin master
+if [ "$(git branch --show-current)" == "master" ]; then
+  printTitle "Pulling latests changes"
+  git -C "${CONFIG_DIRECTORY}" pull origin master
+fi
 
 printTitle "Switching to new generation"
 home-manager switch

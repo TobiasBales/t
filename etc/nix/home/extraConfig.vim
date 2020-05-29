@@ -319,3 +319,5 @@ inoremap jk <esc>
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 
+let g:terraform_fmt_on_save=1
+

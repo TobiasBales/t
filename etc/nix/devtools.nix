@@ -10,5 +10,6 @@
     overmind
     terraform
     terraform-lsp
+    tflint
   ];
 }

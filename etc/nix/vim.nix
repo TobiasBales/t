@@ -14,6 +14,7 @@
       vim-toml
       vim-pandoc
       vim-pandoc-syntax
+      vim-terraform
 
       # UI
       vim-gitgutter
@@ -35,7 +36,6 @@
       supertab
       vim-endwise        # add end, } after opening block
       ale
-      nerdtree
       nerdtree
 
       # Buffer / Pane / File Management

@@ -8,5 +8,7 @@
     ktlint
     lefthook
     overmind
+    terraform
+    terraform-lsp
   ];
 }

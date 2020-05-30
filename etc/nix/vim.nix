@@ -16,6 +16,10 @@
       vim-pandoc-syntax
       vim-terraform
 
+      # Auto completion
+      coc-nvim
+      coc-solargraph
+
       # UI
       vim-gitgutter
       vim-devicons

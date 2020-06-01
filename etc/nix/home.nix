@@ -4,7 +4,6 @@ let
   relativeXDGConfigPath = ".config";
   relativeXDGDataPath = ".local/share";
   relativeXDGCachePath = ".cache";
-  osConfigFile = if builtins.currentSystem == "x86_64-linux" then ./linux.nix else ./darwin.nix;
 in {
   imports = [
     ./devtools.nix
@@ -14,7 +13,6 @@ in {
     ./shell.nix
     ./tmux.nix
     ./vim.nix
-    osConfigFile 
   ];
 
   xdg.enable = true;

@@ -17,12 +17,25 @@ CONFIG_DIRECTORY="${1:-/t}"
 CONFIG_GIT_REMOTE=git@github.com:TobiasBales/t.git
 
 GROUP=$(id -gn)
+UNAME=$(uname -s)
 
 if ! [ -d "${CONFIG_DIRECTORY}" ]; then
   printTitle "${CONFIG_DIRECTORY} doesn't exist, creating"
   sudo mkdir "${CONFIG_DIRECTORY}"
   sudo chown -R "${USER}":"${GROUP}" "${CONFIG_DIRECTORY}"
   git clone "${CONFIG_GIT_REMOTE}" "${CONFIG_DIRECTORY}"
+fi
+
+if [ "${UNAME}" == "Darwin" ]; then
+  if ! [ -f "/etc/sudoers.d/nix-darwin" ]; then
+    printTitle "Making darwin-rebuild run without entering the password everytime, this requires root"
+    sudo sh -c "echo \"${USER} ALL=(ALL:ALL) NOPASSWD: /run/current-system/sw/bin/darwin-rebuild\" > /etc/sudoers.d/nix-darwin"
+  fi
+
+  if ! [ -L "/run" ]; then
+    echo "Symlinking /run to /private/var/run, this requires root"
+    sudo ln -s /private/var/run /run
+  fi
 fi
 
 if [ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
@@ -35,7 +48,7 @@ if [ -z "$(command -v nix)" ]; then
   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
 
-export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+export NIX_PATH=$HOME/.nix-defexpr/channels:${NIX_PATH}
 export HOME_MANAGER_CONFIG="${CONFIG_DIRECTORY}/etc/nix/home.nix"
 
 if [ -z "$(command -v home-manager)" ]; then
@@ -46,11 +59,27 @@ if [ -z "$(command -v home-manager)" ]; then
   nix-shell '<home-manager>' -A install
 fi
 
+export NIX_PATH=darwin-config="${CONFIG_DIRECTORY}/etc/nix/darwin.nix":${NIX_PATH}
+export darwinConfig="${CONFIG_DIRECTORY}/etc/nix/nix-darwin.nix"
+
+if [ "${UNAME}" == "Darwin" ] && [ -z "$(command -v darwin-rebuild)" ]; then
+  echo "nix-darwin not found, installing"
+  nix-channel --add https://github.com/LnL7/nix-darwin/archive/master.tar.gz darwin
+  nix-channel --update
+  nix-build '<darwin>' -A installer --out-link /tmp/nix-darwin && yes | /tmp/nix-darwin/bin/darwin-installer
+fi
+
+
 if [ "$(git branch --show-current)" == "master" ]; then
   printTitle "Pulling latests changes"
   git -C "${CONFIG_DIRECTORY}" pull origin master
 fi
 
+
 printTitle "Switching to new generation"
-home-manager switch
+if [ "${UNAME}" == "Darwin" ]; then
+  darwin-rebuild switch
+else
+  home-manager switch
+fi
 

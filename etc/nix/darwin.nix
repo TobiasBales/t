@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
-{
+let 
+  callPackage = pkgs.callPackage;
+  obsidianmd = callPackage /t/src/apps/obsidianmd.nix { };
+in {
+  nixpkgs.config.allowUnfree = true;
+
   imports = [ <home-manager/nix-darwin> ];
   home-manager.users.tobias = ./home.nix;
   home-manager.useUserPackages = true;
@@ -9,6 +14,7 @@
     home-manager
     pinentry_mac
     terminal-notifier
+    obsidianmd
   ];
 
   environment.shells = with pkgs; [ zsh ];

@@ -1,10 +1,7 @@
 { config, pkgs, lib, ... }:
+{
+  programs.home-manager.enable = true;
 
-let
-  relativeXDGConfigPath = ".config";
-  relativeXDGDataPath = ".local/share";
-  relativeXDGCachePath = ".cache";
-in {
   imports = [
     ./devtools.nix
     ./git.nix
@@ -14,12 +11,5 @@ in {
     ./tmux.nix
     ./vim.nix
   ];
-
-  xdg.enable = true;
-  xdg.configHome = "/Users/tobias/${relativeXDGConfigPath}";
-  xdg.dataHome = "/Users/tobias/${relativeXDGDataPath}";
-  xdg.cacheHome = "/Users/tobias/${relativeXDGCachePath}";
-
-  programs.home-manager.enable = true;
 }
 

@@ -14,8 +14,11 @@ set lazyredraw
 " }}}
 
 " Backup/swap/undo Directories {{{
+silent !mkdir ~/.config/nvim/backup > /dev/null 2>&1
 set backupdir=~/.config/nvim/backup
+silent !mkdir ~/.config/nvim/swaps > /dev/null 2>&1
 set directory=~/.config/nvim/swaps
+silent !mkdir ~/.config/nvim/undo > /dev/null 2>&1
 set undodir=~/.config/nvim/undo
 set undofile
 " }}}

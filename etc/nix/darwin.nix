@@ -20,5 +20,34 @@
   programs.fish.enable = false;
 
   system.stateVersion = 4;
+
+  programs.nix-index.enable = true;
+
+  system.defaults.NSGlobalDomain.AppleKeyboardUIMode = 3;
+  system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticDashSubstitutionEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
+  system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
+  system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
+  system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode2 = true;
+  system.defaults.NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
+  system.defaults.NSGlobalDomain._HIHideMenuBar = false;
+
+  system.defaults.dock.autohide = true;
+  system.defaults.dock.orientation = "bottom";
+  system.defaults.dock.showhidden = true;
+  system.defaults.dock.mru-spaces = false;
+
+  system.defaults.finder.AppleShowAllExtensions = true;
+  system.defaults.finder.QuitMenuItem = true;
+  system.defaults.finder.FXEnableExtensionChangeWarning = false;
+
+  system.defaults.trackpad.Clicking = false;
+  system.defaults.trackpad.TrackpadThreeFingerDrag = true;
+
+  system.keyboard.enableKeyMapping = true;
+  system.keyboard.remapCapsLockToControl = true;
 }
 

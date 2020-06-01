@@ -17,8 +17,8 @@
       vim-terraform
 
       # Auto completion
+      coc-json
       coc-nvim
-      coc-solargraph
 
       # UI
       vim-gitgutter
@@ -50,4 +50,6 @@
       vim-fugitive # Gblame
     ];
   };
+
+  home.file.".config/nvim/coc-settings.json".source = ./home/nvim/coc-settings.json;
 }

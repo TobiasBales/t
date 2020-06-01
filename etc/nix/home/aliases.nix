@@ -2,6 +2,8 @@
   ls = "exa";
   ll = "exa -l";
 
+  vim = "nvim";
+
   tn="tmux new -s ";
   ta="tmux attach -t ";
   tl="tmux ls";

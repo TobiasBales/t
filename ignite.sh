@@ -51,7 +51,7 @@ fi
 if [ "${UNAME}" == "Darwin" ]; then
   if ! [ -f "/etc/sudoers.d/nix-darwin" ]; then
     printTitle "Making darwin-rebuild run without entering the password everytime, this requires root"
-    sudo sh -c "echo \"${USER} ALL=(ALL:ALL) NOPASSWD: /run/current-system/sw/bin/darwin-rebuild\" > /etc/sudoers.d/nix-darwin"
+    sudo sh -c "echo \"${USER} ALL=(ALL:ALL) NOPASSWD: /run/current-system/sw/bin/darwin-rebuild, /run/current-system/sw/bin/nix-env, /run/current-system/sw/bin/nix-build, /bin/launchctl, /run/current-system/sw/bin/ln, /nix/store/*/activate\" > /etc/sudoers.d/nix-darwin"
   fi
 
   MACOS_VERSION=$(sw_vers -productVersion | grep -o "\d\d\.\d\d")

@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     awscli
     docker-compose
+    fzf
     global
     jq
     ktlint

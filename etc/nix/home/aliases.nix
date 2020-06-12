@@ -14,6 +14,8 @@
 
   cat = "bat";
 
+  gcleanbranches = "git branch -d $(git branch --merged | grep -v master | xargs)";
+
   g = "git";
   ga = "git add";
   gaa = "git add --all";

@@ -27,6 +27,10 @@ fi
 
 /t/update.sh
 
+if [ -z "${TMUX}" ]; then
+  t
+fi
+
 if [ -n "${commands[fzf-share]}" ]; then
   source "$(fzf-share)/key-bindings.zsh"
   source "$(fzf-share)/completion.zsh"

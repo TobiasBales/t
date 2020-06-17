@@ -8,6 +8,7 @@
     global
     jq
     ktlint
+    lazydocker
     lefthook
     overmind
     terraform

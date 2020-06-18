@@ -11,6 +11,7 @@
     lazydocker
     lefthook
     overmind
+    terminal-notifier
     terraform
     terraform-lsp
     tflint

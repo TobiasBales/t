@@ -99,6 +99,9 @@ if [ "${UNAME}" == "Darwin" ] && [ -z "$(command -v darwin-rebuild)" ]; then
   nix-build '<darwin>' -A installer --out-link /tmp/nix-darwin && yes | /tmp/nix-darwin/bin/darwin-installer
 fi
 
+if [ ! -d /nix/var/nix/profiles/per-user/root/channels ]; then
+  mkdir -p /nix/var/nix/profiles/per-user/root/channels
+fi
 
 if [ "$(git branch --show-current)" == "master" ]; then
   printTitle "Pulling latests changes"

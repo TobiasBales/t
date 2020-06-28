@@ -4,6 +4,7 @@
     aws-iam-authenticator
     awscli
     docker-compose
+    dive
     fzf
     global
     jq

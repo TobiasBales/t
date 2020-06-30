@@ -16,7 +16,7 @@
     userName = "Tobias Bales";
     userEmail = "tobiasbales@hey.com";
     extraConfig = {
-      hub.protocol = "https";
+      hub.protocol = "git";
       github.user = "TobiasBales";
       color.ui = true;
       pull.rebase = true;

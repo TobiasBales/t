@@ -14,7 +14,7 @@
   programs.git = {
     enable = true;
     userName = "Tobias Bales";
-    userEmail = "tobias.bales@gmail.com";
+    userEmail = "tobiasbales@hey.com";
     extraConfig = {
       hub.protocol = "https";
       github.user = "TobiasBales";

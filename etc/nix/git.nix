@@ -20,6 +20,7 @@
       github.user = "TobiasBales";
       color.ui = true;
       pull.rebase = true;
+      rebase.autoStash = true;
       merge.conflictstyle = "diff3";
       credential.helper = "osxkeychain";
       diff.algorithm = "patience";

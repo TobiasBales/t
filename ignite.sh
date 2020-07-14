@@ -108,7 +108,7 @@ if [ "$(git branch --show-current)" == "master" ]; then
   git -C "${CONFIG_DIRECTORY}" pull origin master
 fi
 
-nix-channels --update
+nix-channel --update
 
 printTitle "Switching to new generation"
 if [ "${UNAME}" == "Darwin" ]; then

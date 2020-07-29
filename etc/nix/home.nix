@@ -1,5 +1,9 @@
 { config, pkgs, lib, ... }:
 {
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   programs.home-manager.enable = true;
 
   imports = [

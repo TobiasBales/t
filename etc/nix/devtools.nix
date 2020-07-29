@@ -11,6 +11,7 @@
     ktlint
     lazydocker
     lefthook
+    ngrok
     overmind
     terraform
     terraform-lsp

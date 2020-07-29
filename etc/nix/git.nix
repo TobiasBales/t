@@ -23,6 +23,7 @@
       gc.writeCommitGraph = true;
       github.user = "TobiasBales";
       hub.protocol = "git";
+      init.defaultBranch = "main";
       merge.conflictstyle = "diff3";
       protocol.version = "2";
       pull.rebase = true;

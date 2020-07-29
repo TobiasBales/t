@@ -16,17 +16,17 @@
     userName = "Tobias Bales";
     userEmail = "tobiasbales@hey.com";
     extraConfig = {
-      hub.protocol = "git";
-      github.user = "TobiasBales";
       color.ui = true;
-      pull.rebase = true;
-      rebase.autoStash = true;
-      merge.conflictstyle = "diff3";
+      core.commitGraph = true;
       credential.helper = "osxkeychain";
       diff.algorithm = "patience";
-      protocol.version = "2";
-      core.commitGraph = true;
       gc.writeCommitGraph = true;
+      github.user = "TobiasBales";
+      hub.protocol = "git";
+      merge.conflictstyle = "diff3";
+      protocol.version = "2";
+      pull.rebase = true;
+      rebase.autoStash = true;
     };
   };
 }

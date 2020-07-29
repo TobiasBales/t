@@ -12,6 +12,7 @@
     lazydocker
     lefthook
     ngrok
+    nmap
     overmind
     terraform
     terraform-lsp

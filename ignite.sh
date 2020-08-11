@@ -103,11 +103,6 @@ if [ ! -d /nix/var/nix/profiles/per-user/root/channels ]; then
   mkdir -p /nix/var/nix/profiles/per-user/root/channels
 fi
 
-if [ "$(git branch --show-current)" == "master" ]; then
-  printTitle "Pulling latests changes"
-  git -C "${CONFIG_DIRECTORY}" pull origin master
-fi
-
 nix-channel --update
 
 printTitle "Switching to new generation"

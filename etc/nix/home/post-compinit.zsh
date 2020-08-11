@@ -38,3 +38,6 @@ fi
 
 eval "$(starship init zsh)"
 
+function tc {
+  tmux new-session -s "${1}-2" -t "${1}"
+}

@@ -6,6 +6,7 @@
     gitAndTools.gh
     gitAndTools.git-absorb
     gitAndTools.git-interactive-rebase-tool
+    gitAndTools.git-trim
     gitAndTools.hub
     gitAndTools.tig
     onefetch

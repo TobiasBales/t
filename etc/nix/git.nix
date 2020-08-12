@@ -30,6 +30,7 @@
       protocol.version = "2";
       pull.rebase = true;
       rebase.autoStash = true;
+      trim.bases = "main,master";
     };
   };
 }

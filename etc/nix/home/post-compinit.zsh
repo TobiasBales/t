@@ -44,3 +44,4 @@ function tc {
 
 echo "Things to not forget:"
 echo "- git trim"
+echo "- git codeowners <file>"

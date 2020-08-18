@@ -9,6 +9,8 @@
     global
     jq
     ktlint
+    kubectl
+    kubectx
     lazydocker
     lefthook
     ngrok

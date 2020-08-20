@@ -13,7 +13,7 @@
 
   environment.shells = with pkgs; [ zsh ];
 
-  environment.darwinConfig = "/t/etc/nix/darwin.nix";
+  environment.darwinConfig = "/opt/t/etc/nix/darwin.nix";
 
   programs.bash.enable = false;
   programs.zsh.enable = true;
@@ -30,15 +30,17 @@
   system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
   system.defaults.NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
   system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
+  system.defaults.NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
   system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
   system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode2 = true;
-  system.defaults.NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
   system.defaults.NSGlobalDomain._HIHideMenuBar = false;
 
   system.defaults.dock.autohide = true;
+  system.defaults.dock.expose-animation-duration = "0.0";
   system.defaults.dock.orientation = "bottom";
   system.defaults.dock.showhidden = true;
   system.defaults.dock.mru-spaces = false;
+  system.defaults.dock.show-recents = false;
 
   system.defaults.finder.AppleShowAllExtensions = true;
   system.defaults.finder.QuitMenuItem = true;

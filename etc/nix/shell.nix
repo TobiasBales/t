@@ -57,7 +57,7 @@ in {
     sessionVariables = rec {
       NVIM_TUI_ENABLE_TRUE_COLOR = "1";
 
-      HOME_MANAGER_CONFIG = /t/etc/nix/home.nix;
+      HOME_MANAGER_CONFIG = /opt/t/etc/nix/home.nix;
 
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=3";
 

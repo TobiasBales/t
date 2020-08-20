@@ -13,37 +13,15 @@ printTitle() {
   echo ""
 }
 
-CONFIG_DIRECTORY="${1:-/t}"
+CONFIG_DIRECTORY="${1:-/opt/t}"
 CONFIG_GIT_REMOTE=git@github.com:TobiasBales/t.git
 
 GROUP=$(id -gn)
 UNAME=$(uname -s)
 
-setup_catalina_root_mount() {
-  path=$1
-  name=$2
-  echo $path | sudo tee -a /etc/synthetic.conf
-  /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -B
-  echo "LABEL=$name /$path apfs rw" | sudo tee -a /etc/fstab
-  sudo diskutil apfs addVolume disk1 APFSX $name -mountpoint /$path
-  sudo diskutil enableOwnership /$path
-  sudo chown -R $(whoami) /$path
-  passphrase=$(ruby -rsecurerandom -e 'puts SecureRandom.hex(32)')
-  uuid="$(diskutil info /nix | awk '$2 == "UUID:" { print $3 }')"
-  echo $passphrase | sudo diskutil apfs enableFileVault /$path -user disk -stdinpassphrase
-  security add-generic-password \
-    -l "${name}" \
-    -a "${uuid}" \
-    -s "${uuid}" \
-    -D "Encrypted Volume Password" \
-    -w "${passphrase}" \
-    -T "/System/Library/CoreServices/APFSUserAgent" \
-    -T "/System/Library/CoreServices/CSUserAgent"
-}
-
 if ! [ -d "${CONFIG_DIRECTORY}" ]; then
   printTitle "${CONFIG_DIRECTORY} doesn't exist, creating"
-  sudo mkdir "${CONFIG_DIRECTORY}"
+  sudo mkdir -p "${CONFIG_DIRECTORY}"
   sudo chown -R "${USER}":"${GROUP}" "${CONFIG_DIRECTORY}"
   git clone "${CONFIG_GIT_REMOTE}" "${CONFIG_DIRECTORY}"
 fi
@@ -53,28 +31,35 @@ if [ "${UNAME}" == "Darwin" ]; then
     printTitle "Making darwin-rebuild run without entering the password everytime, this requires root"
     sudo sh -c "echo \"${USER} ALL=(ALL:ALL) NOPASSWD: /run/current-system/sw/bin/darwin-rebuild, /run/current-system/sw/bin/nix-env, /run/current-system/sw/bin/nix-build, /bin/launchctl, /run/current-system/sw/bin/ln, /nix/store/*/activate\" > /etc/sudoers.d/nix-darwin"
   fi
-
-  MACOS_VERSION=$(sw_vers -productVersion | grep -o "\d\d\.\d\d")
-  if [ "${MACOS_VERSION}" != "10.14" ]; then
-    echo "Assuming this is running on catalina, doing some prep work for nix"
-    setup_catalina_root_mount t T
-    setup_catalina_root_mount nix Nix
-    setup_catalina_root_mount run Run
-  fi
-
-  if ! [ -L "/run" ]; then
-    echo "Symlinking /run to /private/var/run, this requires root"
-    sudo ln -s /private/var/run /run
-  fi
 fi
 
 if [ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
 
+if [[ "${UNAME}" == "Linux" && -n "$(command -v apt-get)" ]]; then
+  if [[ -z "$(command -v sudo)" ]]; then
+    apt-get update -y
+    apt-get install -y sudo
+  fi
+  sudo apt-get update -y
+  sudo apt-get install -y xz-utils
+fi
+
+if [[ "${GITHUB_ACTIONS}" == "true" && ! -d /etc/nix ]]; then
+  sudo mkdir -p /etc/nix
+  sudo echo "build-users-group =" > /etc/nix/nix.conf
+fi
+
 if [ -z "$(command -v nix)" ]; then
   printTitle "Nix not found, installing"
-  curl -L https://nixos.org/nix/install | sh
+
+  install_options=""
+  if [ "${UNAME}" == "Darwin" ]; then
+    install_options="--darwin-use-unencrypted-nix-store-volume"
+  fi
+
+  sh <(curl -L --silent https://nixos.org/nix/install) ${install_options}
   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
 

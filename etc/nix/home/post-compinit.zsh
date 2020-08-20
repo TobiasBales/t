@@ -25,7 +25,7 @@ if [ -f ~/.nix-profile/etc/profile.d/nix.sh ]; then
   source ~/.nix-profile/etc/profile.d/nix.sh
 fi
 
-/t/update.sh
+/opt/t/update.sh
 
 if [ -z "${TMUX}" ]; then
   t

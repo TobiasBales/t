@@ -15,8 +15,10 @@
     lazydocker
     lefthook
     ngrok
+    nodejs
     nmap
     overmind
+    ruby
     terraform
     terraform-lsp
     tflint

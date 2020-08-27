@@ -9,6 +9,7 @@
   imports = [
     ./devtools.nix
     ./git.nix
+    ./general.nix
     ./go.nix
     ./ruby.nix
     ./shell.nix

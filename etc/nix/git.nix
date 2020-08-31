@@ -18,8 +18,15 @@
     userName = "Tobias Bales";
     userEmail = "tobiasbales@hey.com";
     extraConfig = {
+      color.branch = "auto";
+      color.diff = "auto";
+      color.interactive = "auto";
+      color.status = "auto";
       color.ui = true;
+      core.autocrlf = "input";
       core.commitGraph = true;
+      core.editor = "vim";
+      core.pager = "diff-so-fancy | less --tabs=4 -RFX";
       credential.helper = "osxkeychain";
       diff.algorithm = "patience";
       gc.writeCommitGraph = true;
@@ -30,6 +37,8 @@
       protocol.version = "2";
       pull.rebase = true;
       rebase.autoStash = true;
+      rerere.enabled = true;
+      sequence.editor = "interactive-rebase-tool";
       trim.bases = "main,master";
     };
   };

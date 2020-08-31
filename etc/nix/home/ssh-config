@@ -1,0 +1,2 @@
+IdentityAgent = /opt/t/tmp/yubikey-agent.sock
+AddKeysToAgent = yes

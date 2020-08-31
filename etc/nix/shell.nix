@@ -33,6 +33,8 @@ in {
     initExtraBeforeCompInit = builtins.readFile ./home/pre-compinit.zsh;
     initExtra = builtins.readFile ./home/post-compinit.zsh;
 
+    profileExtra = builtins.readFile ./home/profile.zsh;
+
     plugins = [
       {
         name = "zsh-autosuggestions";

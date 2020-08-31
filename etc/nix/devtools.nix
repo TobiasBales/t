@@ -22,5 +22,6 @@
     terraform
     terraform-lsp
     tflint
+    yubikey-agent
   ];
 }

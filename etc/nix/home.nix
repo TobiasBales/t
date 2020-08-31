@@ -13,6 +13,7 @@
     ./go.nix
     ./ruby.nix
     ./shell.nix
+    ./ssh.nix
     ./tmux.nix
     ./vim.nix
   ];

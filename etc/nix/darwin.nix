@@ -20,6 +20,13 @@
   programs.zsh.enable = true;
   programs.fish.enable = false;
 
+  fonts.enableFontDir = true;
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override {
+      fonts = [ "FiraCode" "JetBrainsMono" ];
+    })
+  ];
+
   system.stateVersion = 4;
 
   programs.nix-index.enable = true;

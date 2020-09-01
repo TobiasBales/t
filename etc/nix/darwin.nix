@@ -20,6 +20,14 @@
   programs.zsh.enable = true;
   programs.fish.enable = false;
 
+  environment.launchDaemons = {
+    yubikeyAgent = {
+      enable = true;
+      source = ./home/yubikey-agent.plist;
+      target = "yubikey-agent.plist";
+    };
+  };
+
   fonts.enableFontDir = true;
   fonts.fonts = with pkgs; [
     (nerdfonts.override {

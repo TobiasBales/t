@@ -12,6 +12,7 @@
   ];
 
   environment.shells = with pkgs; [ zsh ];
+  environment.loginShell = pkgs.zsh;
 
   environment.darwinConfig = "/opt/t/etc/nix/darwin.nix";
 

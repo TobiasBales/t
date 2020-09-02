@@ -27,6 +27,13 @@
       target = "yubikey-agent.plist";
     };
   };
+  environment.userLaunchAgents = {
+    lorriAgent = {
+      enable = true;
+      source = ./home/lorri-daemon.plist;
+      target = "lorri-daemon.plist";
+    };
+  };
 
   fonts.enableFontDir = true;
   fonts.fonts = with pkgs; [

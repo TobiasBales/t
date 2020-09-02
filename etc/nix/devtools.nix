@@ -5,6 +5,7 @@
     aws-iam-authenticator
     awscli
     docker-compose
+    direnv
     dive
     fzf
     global
@@ -14,6 +15,7 @@
     kubectx
     lazydocker
     lefthook
+    lorri
     ngrok
     nodejs
     nmap

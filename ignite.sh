@@ -46,10 +46,15 @@ if [[ "${UNAME}" == "Linux" && -n "$(command -v apt-get)" ]]; then
   sudo apt-get install -y xz-utils
 fi
 
+set +u
 if [[ "${GITHUB_ACTIONS}" == "true" && ! -d /etc/nix ]]; then
   sudo mkdir -p /etc/nix
-  sudo echo "build-users-group =" > /etc/nix/nix.conf
+  echo "build-users-group =" | sudo tee -a /etc/nix/nix.conf > /dev/null
+  sudo chown -R "$(whoami)" /etc/nix
+  sudo mkdir -p /nix
+  sudo chown -R "$(whoami)" /nix
 fi
+set -u
 
 if [ -z "$(command -v nix)" ]; then
   printTitle "Nix not found, installing"

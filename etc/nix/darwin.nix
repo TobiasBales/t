@@ -59,11 +59,14 @@
   system.defaults.NSGlobalDomain._HIHideMenuBar = false;
 
   system.defaults.dock.autohide = true;
+  system.defaults.dock.autohide-delay = "0.1";
+  system.defaults.dock.autohide-time-modifier = "0.1";
   system.defaults.dock.expose-animation-duration = "0.0";
   system.defaults.dock.orientation = "bottom";
   system.defaults.dock.showhidden = true;
   system.defaults.dock.mru-spaces = false;
   system.defaults.dock.show-recents = false;
+  system.defaults.dock.tilesize = 48;
 
   system.defaults.finder.AppleShowAllExtensions = true;
   system.defaults.finder.QuitMenuItem = true;

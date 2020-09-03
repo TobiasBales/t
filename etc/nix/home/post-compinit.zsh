@@ -13,7 +13,7 @@ typeset WORDCHARS="*?_-.~[]=&;!#$%^(){}<>"
 
 function t {
   PROJECT=$(basename $(pwd))
-  SESSION=$(tmux ls | grep "${PROJECT}")
+  SESSION=$(tmux ls | grep "^${PROJECT}:")
   if [[ -z "${SESSION}" ]]; then
     tmux new -s "${PROJECT}"
   else

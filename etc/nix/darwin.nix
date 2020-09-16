@@ -44,6 +44,10 @@
 
   programs.nix-index.enable = true;
 
+  nix.gc.automatic = true;
+  nix.gc.user = "tobias";
+  nix.gc.options = "--max-freed $((25 * 1024**3 - 1024 * $(df -P -k /nix/store | tail -n 1 | awk '{ print $4 }')))";
+
   system.defaults.NSGlobalDomain.AppleKeyboardUIMode = 3;
   system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
   system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;

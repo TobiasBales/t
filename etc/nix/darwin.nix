@@ -20,14 +20,12 @@
   programs.zsh.enable = true;
   programs.fish.enable = false;
 
-  environment.launchDaemons = {
+  environment.userLaunchAgents = {
     yubikeyAgent = {
       enable = true;
       source = ./home/yubikey-agent.plist;
       target = "yubikey-agent.plist";
     };
-  };
-  environment.userLaunchAgents = {
     lorriAgent = {
       enable = true;
       source = ./home/lorri-daemon.plist;

@@ -9,6 +9,7 @@
     dive
     fzf
     global
+    graphviz
     jq
     ktlint
     kubectl

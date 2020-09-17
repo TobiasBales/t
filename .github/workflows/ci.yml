@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 
 jobs:
-  ignite:
+  ignite-on-ubuntu:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -14,3 +14,9 @@ jobs:
       run: ./ignite.sh $(pwd)
       env:
         USER: root
+  ignite-on-macos:
+    runs-on: macos-10.14
+    steps:
+    - uses: actions/checkout@v2
+    - name: Ignite
+      run: ./ignite.sh $(pwd)

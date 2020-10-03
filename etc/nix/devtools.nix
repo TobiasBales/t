@@ -4,9 +4,9 @@
     act
     aws-iam-authenticator
     awscli
-    docker-compose
     direnv
     dive
+    docker-compose
     fzf
     global
     graphviz
@@ -16,10 +16,11 @@
     kubectx
     lazydocker
     lefthook
+    libxml2
     lorri
     ngrok
-    nodejs
     nmap
+    nodejs
     overmind
     ruby
     terraform

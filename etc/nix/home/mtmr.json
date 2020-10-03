@@ -1,10 +1,5 @@
 [
   {
-    "type": "escape",
-    "width": 64,
-    "align": "left"
-  },
-  {
     "type": "appleScriptTitledButton",
     "source": {
       "inline": "if application \"Spotify\" is running then\rtell application \"Spotify\"\rif player state is playing then\rreturn (get artist of current track) & \" – \" & (get name of current track)\relse\rreturn \"\"\rend if\rend tell\rend if\rreturn \"\"\r"

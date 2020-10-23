@@ -44,6 +44,10 @@ function tc {
   tmux new-session -s "${1}-2" -t "${1}"
 }
 
+if [ -f ~/.sdkman/bin/sdkman-init.sh ]; then
+  source ~/.sdkman/bin/sdkman-init.sh
+fi
+
 echo "Things to not forget:"
 echo "- git trim"
 echo "- git codeowners <file>"

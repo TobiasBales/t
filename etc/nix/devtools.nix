@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     act
     aws-iam-authenticator
+    inetutils
     awscli
     direnv
     dive

@@ -15,6 +15,7 @@
       vim-pandoc
       vim-pandoc-syntax
       vim-terraform
+      vim-yaml
 
       # Auto completion
       coc-json

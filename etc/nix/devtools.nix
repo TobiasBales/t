@@ -21,6 +21,7 @@
     lazydocker
     lefthook
     libxml2
+    libyaml
     lorri
     ngrok
     nmap
@@ -30,6 +31,7 @@
     terraform
     terraform-lsp
     tflint
+    yamllint
     yubikey-agent
   ];
 }

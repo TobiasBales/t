@@ -16,7 +16,7 @@
   programs.git = {
     enable = true;
     userName = "Tobias Bales";
-    userEmail = "tobiasbales@hey.com";
+    userEmail = "hi@tobiasbales.dev";
     extraConfig = {
       color.branch = "auto";
       color.diff = "auto";

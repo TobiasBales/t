@@ -5,11 +5,14 @@
     aws-iam-authenticator
     inetutils
     awscli
+    dep
     direnv
     dive
     docker-compose
     fzf
     global
+    mockgen
+    golangci-lint
     graphviz
     jq
     ktlint

@@ -54,6 +54,7 @@ BREW_PACKAGES=(
   "httpie"
   "intellij-idea"
   "loopback"
+  "mediainfo"
   "neovim"
   "obs"
   "qmk-toolbox"

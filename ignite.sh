@@ -47,6 +47,7 @@ BREW_PACKAGES=(
   "git-trim"
   "google-chrome"
   "gpg"
+  "guitar-pro"
   "httpie"
   "intellij-idea"
   "loopback"

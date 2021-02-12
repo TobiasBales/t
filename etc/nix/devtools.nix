@@ -11,9 +11,9 @@
     docker-compose
     fzf
     global
-    mockgen
     golangci-lint
     graphviz
+    httpie
     jq
     ktlint
     kubectl

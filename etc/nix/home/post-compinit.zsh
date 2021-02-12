@@ -48,6 +48,10 @@ if [ -f ~/.sdkman/bin/sdkman-init.sh ]; then
   source ~/.sdkman/bin/sdkman-init.sh
 fi
 
+if [ -f ~/.asdf/asdf.sh ]; then
+. $HOME/.asdf/asdf.sh
+fi
+
 echo "Things to not forget:"
 echo "- git trim"
 echo "- git codeowners <file>"

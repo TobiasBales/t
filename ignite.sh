@@ -34,6 +34,8 @@ BREW_PACKAGES=(
   "bat"
   "coreutils"
   "diff-so-fancy"
+  "homebrew/cask/docker"
+  "docker-compose"
   "enpass"
   "exa"
   "farrago"

@@ -88,7 +88,9 @@ if [ ! -L "${HOME}/.zshrc" ]; then
   echo "zshrc not found, linking"
   rm -rf "${HOME}/.zshrc"
   ln -s "${CONFIG_DIRECTORY}/zsh/.zshrc" "${HOME}/.zshrc"
+  set +u
   source "${HOME}/.zshrc"
+  set -u
 fi
 
 if [ ! -L "${HOME}/.tmux.conf" ]; then

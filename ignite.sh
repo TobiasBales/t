@@ -37,6 +37,7 @@ BREW_PACKAGES=(
   "enpass"
   "exa"
   "farrago"
+  "ffmpeg"
   "fission"
   "font-jetbrains-mono-nerd-font"
   "fzf"

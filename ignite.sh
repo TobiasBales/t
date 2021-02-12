@@ -45,6 +45,7 @@ BREW_PACKAGES=(
   "google-chrome"
   "gpg"
   "httpie"
+  "intellij-idea"
   "neovim"
   "obs"
   "qmk-toolbox"

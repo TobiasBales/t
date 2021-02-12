@@ -124,6 +124,13 @@ if [ ! -L "${HOME}/.gitconfig" ]; then
   ln -s "${CONFIG_DIRECTORY}/.gitconfig" "${HOME}/.gitconfig"
 fi
 
+if [ ! -d "${HOME}/projects/TobiasBales/qmk_firmware" ]; then
+  echo "Qmk not configured, installing"
+  yes | qmk setup TobiasBales/qmk_firmware -H "${HOME}/projects/TobiasBales/qmk_firmware"
+  qmk config user.keyboard=kyria
+  qmk config user.keymap=TobiasBales
+fi
+
 if ! asdf plugin list 2>&1 | grep -q "nodejs"; then
   echo "asdf nodejs plugin not found, installing it and latest nodejs"
   asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git

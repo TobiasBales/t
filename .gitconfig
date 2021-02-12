@@ -1,0 +1,57 @@
+[user]
+  name = Tobias Bales
+  email = hi@tobiasbales.dev
+[alias]
+  pull = pull --rebase
+  log = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+  ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+  daily = "log --since=\"two days ago\" --before=\"today\" --author=\"Tobias Bales\" --no-merges --pretty=format:\"%C(#ff69b4)%s\n%b\n\n\""
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = true
+[init]
+  defaultBranch = main
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore
+  autocrlf = input
+  pager = diff-so-fancy | less --tabs=4 -RFX
+[web]
+  browser = firefox
+[push]
+  default = simple
+  followTags = true
+[rebase]
+  autosquash = true
+[branch]
+  autosetupmerge = true
+[rerere]
+  enabled = true
+[status]
+  showUntrackedFiles = all
+[sequence]
+  editor = interactive-rebase-tool
+[gpg]
+  program = gpg
+[credential]
+  helper = osxkeychain
+[commit]
+  gpgsign = false
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[color "diff"]
+  meta = 11
+  frag = magenta bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse

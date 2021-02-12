@@ -1,0 +1,33 @@
+{
+  "languageserver": {
+    "sorbet": {
+      "command": "srb",
+      "args": [
+        "tc",
+        "-v",
+        "--typed",
+        "true",
+        "--enable-all-experimental-lsp-features",
+        "--lsp",
+        "--disable-watchman",
+        "--dir",
+        "."
+      ],
+      "filetypes": [
+        "ruby"
+      ],
+      "rootPatterns": [
+        "sorbet/config"
+      ],
+      "initializationOptions": {},
+      "settings": {}
+    },
+    "terraform": {
+      "command": "terraform-lsp",
+      "filetypes": [
+        "terraform"
+      ],
+      "initializationOptions": {}
+    }
+  }
+}

@@ -70,7 +70,7 @@ fi
 
 if [ ! -L "${HOME}/.asdfrc" ]; then
   echo "asdf config not found, linking"
-  ln -s "${CONFIG_DIRECTORY}/.asdfrc" "${HOME}/.asdfrc"
+  ln -s "${CONFIG_DIRECTORY}/asdf/.asdfrc" "${HOME}/.asdfrc"
 fi
 
 if [ ! -d "${HOME}/.oh-my-zsh" ]; then
@@ -81,20 +81,20 @@ fi
 if [ ! -L "${HOME}/.alacritty.yml" ]; then
   echo "Alacritty config not found, linking"
   rm -rf "${HOME}/.alacritty.yml"
-  ln -s "${CONFIG_DIRECTORY}/.alacritty.yml" "${HOME}/.alacritty.yml"
+  ln -s "${CONFIG_DIRECTORY}/alacritty/.alacritty.yml" "${HOME}/.alacritty.yml"
 fi
 
 if [ ! -L "${HOME}/.zshrc" ]; then
   echo "zshrc not found, linking"
   rm -rf "${HOME}/.zshrc"
-  ln -s "${CONFIG_DIRECTORY}/.zshrc" "${HOME}/.zshrc"
+  ln -s "${CONFIG_DIRECTORY}/zsh/.zshrc" "${HOME}/.zshrc"
   source "${HOME}/.zshrc"
 fi
 
 if [ ! -L "${HOME}/.tmux.conf" ]; then
   echo "tmux config not found, linking"
   rm -rf "${HOME}/.tmux.conf"
-  ln -s "${CONFIG_DIRECTORY}/.tmux.conf" "${HOME}/.tmux.conf"
+  ln -s "${CONFIG_DIRECTORY}/tmux/.tmux.conf" "${HOME}/.tmux.conf"
 fi
 
 if [ ! -d "${HOME}/.tmux/plugins/tpm" ]; then
@@ -110,18 +110,18 @@ fi
 
 if [ ! -L "${HOME}/.config/nvim/init.vim" ]; then
   echo "Neovim config not found, linking"
-  ln -s "${CONFIG_DIRECTORY}/init.vim" "${HOME}/.config/nvim/init.vim"
+  ln -s "${CONFIG_DIRECTORY}/vim/init.vim" "${HOME}/.config/nvim/init.vim"
 fi
 
 if [ ! -L "${HOME}/.config/nvim/coc-settings.json" ]; then
   echo "coc config not found, linking"
   mkdir -p "${HOME}/.config/nvim"
-  ln -s "${CONFIG_DIRECTORY}/coc-settings.json" "${HOME}/.config/nvim/coc-settings.json"
+  ln -s "${CONFIG_DIRECTORY}/vim/coc-settings.json" "${HOME}/.config/nvim/coc-settings.json"
 fi
 
 if [ ! -L "${HOME}/.gitconfig" ]; then
   echo "git config not found, linking"
-  ln -s "${CONFIG_DIRECTORY}/.gitconfig" "${HOME}/.gitconfig"
+  ln -s "${CONFIG_DIRECTORY}/git/.gitconfig" "${HOME}/.gitconfig"
 fi
 
 if [ ! -d "${HOME}/projects/TobiasBales/qmk_firmware" ]; then

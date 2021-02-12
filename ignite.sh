@@ -47,6 +47,7 @@ BREW_PACKAGES=(
   "git-trim"
   "google-chrome"
   "gpg"
+  "grep"
   "guitar-pro"
   "httpie"
   "intellij-idea"

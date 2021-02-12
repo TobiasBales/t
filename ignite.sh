@@ -71,6 +71,8 @@ BREW_PACKAGES=(
   "wxmac"
   "yubikey-agent"
   "zsh"
+  "zsh-autosuggestions"
+  "zsh-syntax-highlighting"
 )
 brew install "${BREW_PACKAGES[@]}"
 brew services start yubikey-agent

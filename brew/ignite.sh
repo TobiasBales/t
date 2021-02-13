@@ -25,6 +25,7 @@ BREW_PACKAGES=(
   "coreutils"
   "diff-so-fancy"
   "docker-compose"
+  "elgato-control-center"
   "enpass"
   "exa"
   "farrago"

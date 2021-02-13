@@ -67,6 +67,7 @@ BREW_PACKAGES=(
   "softprops/tools/git-codeowners"
   "tldr"
   "tmux"
+  "tree"
   "vim"
   "wxmac"
   "yubikey-agent"

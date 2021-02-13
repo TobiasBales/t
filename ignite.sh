@@ -65,6 +65,7 @@ BREW_PACKAGES=(
   "ripgrep"
   "shellcheck"
   "softprops/tools/git-codeowners"
+  "starship"
   "tldr"
   "tmux"
   "tree"
@@ -215,6 +216,12 @@ fi
 
 echo "Updating asdf plugins"
 asdf plugin update --all
+
+if [ ! -L "${HOME}/.config/starship.toml" ]; then
+  echo "Starship config not found, linking"
+  mkdir -p "${HOME}/.config"
+  ln -s "${CONFIG_DIRECTORY}/starship/starship.config" "${HOME}/.config/starship.toml"
+fi
 
 echo "Enforcing macos settings"
 # auto hide dock, quickly

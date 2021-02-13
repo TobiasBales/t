@@ -134,3 +134,5 @@ $HOME/projects/TobiasBales/t/update.sh
 if [ -z "${TMUX}" ]; then
   t
 fi
+
+eval "$(starship init zsh)"

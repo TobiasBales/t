@@ -51,6 +51,7 @@ BREW_PACKAGES=(
   "qmk-toolbox"
   "qmk/qmk/qmk"
   "raycast"
+  "reaper"
   "ripgrep"
   "shellcheck"
   "softprops/tools/git-codeowners"

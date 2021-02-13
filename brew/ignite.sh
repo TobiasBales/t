@@ -17,6 +17,7 @@ brew upgrade
 echo "Installing homebrew packages"
 BREW_PACKAGES=(
   "alacritty"
+  "anki"
   "audio-hijack"
   "autoconf"
   "awscli"
@@ -55,6 +56,7 @@ BREW_PACKAGES=(
   "ripgrep"
   "shellcheck"
   "softprops/tools/git-codeowners"
+  "spotify"
   "soundsource"
   "starship"
   "tldr"

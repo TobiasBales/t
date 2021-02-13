@@ -5,7 +5,9 @@ set -euo pipefail
 CONFIG_DIRECTORY="${HOME}/projects/TobiasBales/t"
 CONFIG_REMOTE=git@github.com:TobiasBales/t.git
 
+set +u
 SCRIPT_DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+set -u
 
 if [ "${SCRIPT_DIRECTORY}" != "${CONFIG_DIRECTORY}" ]; then
   echo "Running script not from config directory, cloning it"

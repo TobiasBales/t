@@ -65,6 +65,7 @@ BREW_PACKAGES=(
   "ripgrep"
   "shellcheck"
   "softprops/tools/git-codeowners"
+  "soundsource"
   "starship"
   "tldr"
   "tmux"

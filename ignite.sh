@@ -224,6 +224,11 @@ if [ ! -L "${HOME}/.config/starship.toml" ]; then
   ln -s "${CONFIG_DIRECTORY}/starship/starship.config" "${HOME}/.config/starship.toml"
 fi
 
+if [ ! -L "/usr/local/bin/backup" ]; then
+  echo "Backup script not found, linking"
+  ln -s "${CONFIG_DIRECTORY}/scripts/backup" "/usr/local/bin/backup"
+fi
+
 echo "Enforcing macos settings"
 # auto hide dock, quickly
 defaults write com.apple.dock autohide -int 1

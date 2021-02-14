@@ -50,6 +50,7 @@ BREW_PACKAGES=(
   "mediainfo"
   "neovim"
   "obs"
+  "prusaslicer"
   "qmk-toolbox"
   "qmk/qmk/qmk"
   "raycast"

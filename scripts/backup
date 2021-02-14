@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-rsync -v --archive "$HOME/Library/Application Support/Steam/steamapps/common/Rocksmith2014/dlc/" rsync://tobias@nas.local/storage_tobias/tobias/Rocksmith_DLCs
+rsync -v --archive "$HOME/Library/Application Support/Steam/steamapps/common/Rocksmith2014/dlc/" rsync://tobias@nas.local/storage_tobias/tobias/Rocksmith/DLCs
 rsync -v --archive "$HOME/Documents/Arduino/" rsync://tobias@nas.local/storage_tobias/tobias/Documents/Arduino
 rsync -v --archive "$HOME/Documents/Books/" rsync://tobias@nas.local/storage_tobias/tobias/Documents/Books
 rsync -v --archive "$HOME/Documents/Guitar/" rsync://tobias@nas.local/storage_tobias/tobias/Documents/Guitar

@@ -136,3 +136,8 @@ if [ -z "${TMUX}" ]; then
 fi
 
 eval "$(starship init zsh)"
+
+if [[ ! -z "$(git --git-dir=${HOME}/projects/TobiasBales/t/.git log origin/main..HEAD)" || ! -z "$(git --git-dir=${HOME}/projects/TobiasBales/t/.git status --porcelain)" ]]; then
+  echo "Unpushed or uncommited changes in dotfiles, don't forget to push them"
+fi
+

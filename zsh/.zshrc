@@ -141,3 +141,6 @@ if [[ ! -z "$(git --git-dir=${HOME}/projects/TobiasBales/t/.git log origin/main.
   echo "Unpushed or uncommited changes in dotfiles, don't forget to push them"
 fi
 
+if [[ ! -z "$(git --git-dir=${HOME}/projects/TobiasBales/qmk_firmware/.git log origin/master..HEAD)" || ! -z "$(git --git-dir=${HOME}/projects/TobiasBales/qmk_firmware/.git status --porcelain)" ]]; then
+  echo "Unpushed or uncommited changes in qmk firmware, don't forget to push them"
+fi

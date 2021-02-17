@@ -23,5 +23,6 @@ fi
 ./asdf/ignite.sh
 ./vim/ignite.sh
 ./qmk/ignite.sh
+./git/ignite.sh "${CONFIG_DIRECTORY}"
 ./scripts/ignite.sh
 ./macos/ignite.sh

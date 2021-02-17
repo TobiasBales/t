@@ -15,14 +15,14 @@ if [ "${SCRIPT_DIRECTORY}" != "${CONFIG_DIRECTORY}" ]; then
   exec "${CONFIG_DIRECTORY}/ignite.sh"
 fi
 
-./brew/ignite.sh
-./starship/ignite.sh
-./zsh/ignite.sh
-./tmux/ignite.sh
-./alacritty/ignite.sh
-./asdf/ignite.sh
-./vim/ignite.sh
-./qmk/ignite.sh
+./brew/ignite.sh "${CONFIG_DIRECTORY}"
+./starship/ignite.sh "${CONFIG_DIRECTORY}"
+./zsh/ignite.sh "${CONFIG_DIRECTORY}"
+./tmux/ignite.sh "${CONFIG_DIRECTORY}"
+./alacritty/ignite.sh "${CONFIG_DIRECTORY}"
+./asdf/ignite.sh "${CONFIG_DIRECTORY}"
+./vim/ignite.sh "${CONFIG_DIRECTORY}"
+./qmk/ignite.sh "${CONFIG_DIRECTORY}"
 ./git/ignite.sh "${CONFIG_DIRECTORY}"
-./scripts/ignite.sh
-./macos/ignite.sh
+./scripts/ignite.sh "${CONFIG_DIRECTORY}"
+./macos/ignite.sh "${CONFIG_DIRECTORY}"

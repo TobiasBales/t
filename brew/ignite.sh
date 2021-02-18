@@ -16,6 +16,7 @@ brew upgrade
 
 echo "Installing homebrew packages"
 BREW_PACKAGES=(
+  "act"
   "alacritty"
   "anki"
   "audio-hijack"

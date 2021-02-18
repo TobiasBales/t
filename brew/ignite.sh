@@ -55,6 +55,7 @@ BREW_PACKAGES=(
   "qfinder-pro"
   "qmk-toolbox"
   "qmk/qmk/qmk"
+  "qsync-client"
   "raycast"
   "reaper"
   "ripgrep"

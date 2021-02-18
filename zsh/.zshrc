@@ -137,10 +137,15 @@ fi
 
 eval "$(starship init zsh)"
 
-if [[ ! -z "$(git --git-dir=${HOME}/projects/TobiasBales/t/.git log origin/main..HEAD)" || ! -z "$(git --git-dir=${HOME}/projects/TobiasBales/t/.git status --porcelain)" ]]; then
-  echo "Unpushed or uncommited changes in dotfiles, don't forget to push them"
-fi
+function pristineRepository() {
+  if [ ! -z "$(git -C ${1} status --porcelain)" ]; then
+    echo "Uncommited changes in ${3}, don't forget to commit them"
+  fi
 
-if [[ ! -z "$(git --git-dir=${HOME}/projects/TobiasBales/qmk_firmware/.git log origin/master..HEAD)" || ! -z "$(git --git-dir=${HOME}/projects/TobiasBales/qmk_firmware/.git status --porcelain)" ]]; then
-  echo "Unpushed or uncommited changes in qmk firmware, don't forget to push them"
-fi
+  if [ ! -z "$(git -C ${1} log origin/${2}..HEAD)" ]; then
+    echo "Unpushed changes in ${3}, don't forget to push them"
+  fi
+}
+
+pristineRepository "${HOME}/projects/TobiasBales/t" "main" "dotfiles"
+pristineRepository "${HOME}/projects/TobiasBales/qmk_firmware" "master" "qmk_firmware"

@@ -52,6 +52,7 @@ BREW_PACKAGES=(
   "neovim"
   "obs"
   "prusaslicer"
+  "qfinder-pro"
   "qmk-toolbox"
   "qmk/qmk/qmk"
   "raycast"

@@ -46,6 +46,7 @@ BREW_PACKAGES=(
   "guitar-pro"
   "homebrew/cask/docker"
   "httpie"
+  "imagemagick"
   "intellij-idea"
   "loopback"
   "mediainfo"

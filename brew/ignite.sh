@@ -41,6 +41,7 @@ BREW_PACKAGES=(
   "git-interactive-rebase-tool"
   "git-trim"
   "gnu-sed"
+  "gnuplot"
   "google-chrome"
   "gpg"
   "grep"

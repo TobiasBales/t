@@ -60,6 +60,7 @@ BREW_PACKAGES=(
   "qmk-toolbox"
   "qmk/qmk/qmk"
   "qsync-client"
+  "raspberry-pi-imager"
   "raycast"
   "reaper"
   "ripgrep"

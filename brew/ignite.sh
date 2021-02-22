@@ -53,6 +53,7 @@ BREW_PACKAGES=(
   "loopback"
   "mediainfo"
   "neovim"
+  "node_exporter"
   "obs"
   "prusaslicer"
   "qfinder-pro"
@@ -79,3 +80,4 @@ BREW_PACKAGES=(
 )
 brew install "${BREW_PACKAGES[@]}"
 brew services start yubikey-agent
+brew services start node_exporter

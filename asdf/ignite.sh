@@ -77,5 +77,12 @@ if ! asdf plugin list 2>&1 | grep -q "rust"; then
   asdf global rust "$(asdf latest rust)"
 fi
 
+if ! asdf plugin list 2>&1 | grep -q "terraform"; then
+  echo "asdf terraform plugin not found, installing it and latest terraform"
+  asdf plugin-add terraform
+  asdf install terraform latest
+  asdf global terraform "$(asdf latest terraform)"
+fi
+
 echo "Updating asdf plugins"
 asdf plugin update --all

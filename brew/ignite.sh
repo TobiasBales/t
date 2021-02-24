@@ -57,6 +57,7 @@ BREW_PACKAGES=(
   "neovim"
   "node_exporter"
   "obs"
+  "openemu"
   "prusaslicer"
   "qfinder-pro"
   "qmk-toolbox"

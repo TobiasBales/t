@@ -16,6 +16,8 @@ brew upgrade
 
 echo "Installing homebrew packages"
 BREW_PACKAGES=(
+  "8bitdo-firmware-updater"
+  "8bitdo-ultimate-software"
   "act"
   "alacritty"
   "anki"

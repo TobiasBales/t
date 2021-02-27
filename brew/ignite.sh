@@ -18,6 +18,7 @@ echo "Installing homebrew packages"
 BREW_PACKAGES=(
   "8bitdo-firmware-updater"
   "8bitdo-ultimate-software"
+  "Arkweid/lefthook/lefthook"
   "act"
   "alacritty"
   "anki"

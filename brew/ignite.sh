@@ -58,6 +58,7 @@ BREW_PACKAGES=(
   "node_exporter"
   "obs"
   "openemu"
+  "overmind"
   "prusaslicer"
   "qfinder-pro"
   "qmk-toolbox"

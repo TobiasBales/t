@@ -60,6 +60,7 @@ BREW_PACKAGES=(
   "obs"
   "openemu"
   "overmind"
+  "plexamp"
   "prusaslicer"
   "qfinder-pro"
   "qmk-toolbox"

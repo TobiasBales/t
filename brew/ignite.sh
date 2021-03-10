@@ -60,6 +60,7 @@ BREW_PACKAGES=(
   "node_exporter"
   "obs"
   "openemu"
+  "openscad"
   "overmind"
   "plexamp"
   "prusaslicer"

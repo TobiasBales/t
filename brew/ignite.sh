@@ -62,6 +62,7 @@ BREW_PACKAGES=(
   "openemu"
   "openscad"
   "overmind"
+  "plex"
   "plexamp"
   "prusaslicer"
   "qfinder-pro"

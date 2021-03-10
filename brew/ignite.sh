@@ -30,6 +30,7 @@ BREW_PACKAGES=(
   "diff-so-fancy"
   "docker-compose"
   "elgato-control-center"
+  "elgato-stream-deck"
   "enpass"
   "exa"
   "farrago"

@@ -9,6 +9,7 @@ fi
 
 echo "Updating homebrew"
 brew tap filippo.io/yubikey-agent https://filippo.io/yubikey-agent
+brew tap heroku/brew
 brew tap homebrew/cask-drivers
 brew tap homebrew/cask-fonts
 brew update
@@ -50,6 +51,7 @@ BREW_PACKAGES=(
   "gpg"
   "grep"
   "guitar-pro"
+  "heroku"
   "homebrew/cask/docker"
   "httpie"
   "imagemagick"

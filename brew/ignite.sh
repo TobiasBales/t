@@ -78,6 +78,7 @@ BREW_PACKAGES=(
   "soundsource"
   "spotify"
   "starship"
+  "the-unarchiver"
   "tldr"
   "tmux"
   "tree"

@@ -67,6 +67,7 @@ BREW_PACKAGES=(
   "plex"
   "plexamp"
   "prusaslicer"
+  "pwgen"
   "qfinder-pro"
   "qmk-toolbox"
   "qmk/qmk/qmk"

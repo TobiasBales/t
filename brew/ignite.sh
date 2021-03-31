@@ -85,6 +85,7 @@ BREW_PACKAGES=(
   "tldr"
   "tmux"
   "tree"
+  "up"
   "vim"
   "wxmac"
   "yubikey-agent"

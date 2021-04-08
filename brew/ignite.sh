@@ -56,6 +56,7 @@ BREW_PACKAGES=(
   "httpie"
   "imagemagick"
   "intellij-idea"
+  "jetbrains-toolbox"
   "loopback"
   "mediainfo"
   "neovim"

@@ -88,6 +88,7 @@ BREW_PACKAGES=(
   "tree"
   "up"
   "vim"
+  "visual-studio-code"
   "wxmac"
   "yubikey-agent"
   "zsh"

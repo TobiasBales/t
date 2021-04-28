@@ -129,6 +129,10 @@ if [ -f ~/.asdf/asdf.sh ]; then
 . $HOME/.asdf/asdf.sh
 fi
 
+if [ -f "${HOME}/.secrets.zsh" ]; then
+  source "${HOME}/.secrets.zsh"
+fi
+
 $HOME/projects/TobiasBales/t/update.sh
 
 if [ -z "${TMUX}" ]; then

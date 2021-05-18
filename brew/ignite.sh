@@ -64,6 +64,7 @@ BREW_PACKAGES=(
   "obs"
   "openemu"
   "openscad"
+  "openssh"
   "overmind"
   "plex"
   "plexamp"

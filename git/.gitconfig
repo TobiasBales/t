@@ -1,6 +1,7 @@
 [user]
   name = Tobias Bales
   email = hi@tobiasbales.dev
+	signingkey = DB2F7C4A6F025E4F1D1884246C2EE42ACAC689B4
 [alias]
   pull = pull --rebase
   log = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -42,7 +43,7 @@
 [credential]
   helper = osxkeychain
 [commit]
-  gpgsign = false
+	gpgsign = true
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52

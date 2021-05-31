@@ -8,7 +8,6 @@ if ! command -v brew &> /dev/null; then
 fi
 
 echo "Updating homebrew"
-brew tap filippo.io/yubikey-agent https://filippo.io/yubikey-agent
 brew tap heroku/brew
 brew tap homebrew/cask-drivers
 brew tap homebrew/cask-fonts
@@ -91,11 +90,9 @@ BREW_PACKAGES=(
   "vim"
   "visual-studio-code"
   "wxmac"
-  "yubikey-agent"
   "zsh"
   "zsh-autosuggestions"
   "zsh-syntax-highlighting"
 )
 brew install "${BREW_PACKAGES[@]}"
-brew services start yubikey-agent
 brew services start node_exporter

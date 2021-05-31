@@ -99,8 +99,6 @@ if [ -f ~/.asdf/plugins/java/set-java-home.zsh ]; then
   source ~/.asdf/plugins/java/set-java-home.zsh
 fi
 
-export SSH_AUTH_SOCK="/usr/local/var/run/yubikey-agent.sock"
-
 alias cat="bat";
 alias la="exa --all --long"
 alias ll="exa --long";

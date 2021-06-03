@@ -61,6 +61,7 @@ BREW_PACKAGES=(
   "neovim"
   "node_exporter"
   "obs"
+  "obsidian"
   "openemu"
   "openscad"
   "openssh"

@@ -84,5 +84,12 @@ if ! asdf plugin list 2>&1 | grep -q "terraform"; then
   asdf global terraform "$(asdf latest terraform)"
 fi
 
+if ! asdf plugin list 2>&1 | grep -q "elixir"; then
+  echo "asdf elixir plugin not found, installing it and latest elixir"
+  asdf plugin-add elixir
+  asdf install elixir latest
+  asdf global elixir "$(asdf latest elixir)"
+fi
+
 echo "Updating asdf plugins"
 asdf plugin update --all

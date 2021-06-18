@@ -81,15 +81,15 @@ colors:
 font:
   size: 14
   normal:
-    family: JetBrainsMono Nerd Font
+    family: Fira Code
     style: Regular
 
   bold:
-    family: JetBrainsMono Nerd Font
+    family: Fira Code
     style: Bold
 
   italic:
-    family: JetBrainsMono Nerd Font
+    family: Fira Code
     style: Italic
 
   offset:

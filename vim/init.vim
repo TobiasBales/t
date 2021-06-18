@@ -7,10 +7,17 @@ Plug 'cespare/vim-toml'
 Plug 'hashivim/vim-terraform'
 Plug 'stephpy/vim-yaml'
 Plug 'aklt/plantuml-syntax'
+Plug 'elixir-editors/vim-elixir'
+Plug 'mhinz/vim-mix-format'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'peitalin/vim-jsx-typescript'
 
 " Auto completion
 Plug 'neoclide/coc-json'
 Plug 'neoclide/coc.nvim'
+Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
 
 " UI
 Plug 'airblade/vim-gitgutter'
@@ -32,6 +39,7 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-endwise'
 Plug 'dense-analysis/ale'
 Plug 'preservim/nerdtree'
+Plug 'tpope/vim-dadbod'
 
 " Find everything
 Plug 'junegunn/fzf'
@@ -218,6 +226,26 @@ endif
 " LightLine {{{
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
+" }}}
+
+" Elixir {{{
+nnoremap <silent> <leader>co  :<C-u>CocList outline<CR>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+nmap <leader>rn <Plug>(coc-rename)
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 " }}}
 
 " FZF {{{

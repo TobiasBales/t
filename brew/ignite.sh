@@ -37,6 +37,7 @@ BREW_PACKAGES=(
   "ffmpeg"
   "fission"
   "focusrite-control"
+  "font-fira-code"
   "font-jetbrains-mono-nerd-font"
   "fzf"
   "gawk"

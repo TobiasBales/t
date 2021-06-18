@@ -20,6 +20,7 @@ fi
 "${CONFIG_DIRECTORY}/zsh/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/tmux/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/alacritty/ignite.sh" "${CONFIG_DIRECTORY}"
+"${CONFIG_DIRECTORY}/kitty/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/asdf/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/vim/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/qmk/ignite.sh" "${CONFIG_DIRECTORY}"

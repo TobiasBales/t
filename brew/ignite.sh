@@ -57,6 +57,7 @@ BREW_PACKAGES=(
   "intellij-idea"
   "istat-menus"
   "jetbrains-toolbox"
+  "kitty"
   "loopback"
   "mediainfo"
   "neovim"

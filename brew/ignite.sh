@@ -34,6 +34,7 @@ BREW_PACKAGES=(
   "enpass"
   "exa"
   "farrago"
+  "fd"
   "ffmpeg"
   "fission"
   "focusrite-control"

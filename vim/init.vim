@@ -1,70 +1,187 @@
 call plug#begin(stdpath('data') . '/plugged')
 
-" Syntax
-Plug 'vim-ruby/vim-ruby'
-Plug 'fatih/vim-go'
-Plug 'cespare/vim-toml'
-Plug 'hashivim/vim-terraform'
-Plug 'stephpy/vim-yaml'
-Plug 'aklt/plantuml-syntax'
-Plug 'elixir-editors/vim-elixir'
-Plug 'mhinz/vim-mix-format'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'peitalin/vim-jsx-typescript'
-
-" Auto completion
-Plug 'neoclide/coc-json'
-Plug 'neoclide/coc.nvim'
-Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
-
-" UI
-Plug 'airblade/vim-gitgutter'
-Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline'
-Plug 'morhetz/gruvbox'
-
-" Tmux
+Plug 'Raimondi/delimitMate'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'hrsh7th/nvim-compe'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'morhetz/gruvbox'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'vim-airline/vim-airline'
+Plug 'TimUntersberger/neogit'
 
-" Editor features
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-unimpaired'
-Plug 'ervandew/supertab'
 Plug 'tpope/vim-endwise'
-Plug 'dense-analysis/ale'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-dadbod'
 
-" Find everything
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-
-Plug 'tpope/vim-fugitive'
-Plug 'preservim/tagbar'
-
 call plug#end()
 
-" ## Settings {{{
+if $TERM_BG == "light"
+  set background=light
+else
+  set background=dark
+endif
+colorscheme gruvbox
 
-" map*leader {{{
+lua <<EOF
+vim.o.completeopt = "menuone,noselect"
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+  },
+  indent = {
+    enable = true
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+}
+local nvim_lsp = require('lspconfig')
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  --Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+
+end
+
+nvim_lsp.elixirls.setup {
+  cmd = { "/usr/local/custom/elixir-ls/language_server.sh" };
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { "pyright", "rust_analyzer", "tsserver" }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }
+end
+-- Compe setup
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    nvim_lsp = true;
+  };
+}
+
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+        return true
+    else
+        return false
+    end
+end
+
+-- Use (s-)tab to:
+--- move to prev/next item in completion menuone
+--- jump to prev/next snippet's placeholder
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  elseif check_back_space() then
+    return t "<Tab>"
+  else
+    return vim.fn['compe#complete']()
+  end
+end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  else
+    return t "<S-Tab>"
+  end
+end
+
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+local neogit = require('neogit')
+
+neogit.setup {}
+EOF
 let mapleader=" "
 let maplocalleader="\\"
-" }}}
-
-" TTY Performance {{{
+set nofoldenable
+nnoremap <leader>g <cmd>Neogit<cr>
+inoremap jk <esc>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 set nocompatible
 set synmaxcol=300
 set ttyfast
 set lazyredraw
-" }}}
-
-" Backup/swap/undo Directories {{{
 silent !mkdir ~/.config/nvim/backup > /dev/null 2>&1
 set backupdir=~/.config/nvim/backup
 silent !mkdir ~/.config/nvim/swaps > /dev/null 2>&1
@@ -72,58 +189,28 @@ set directory=~/.config/nvim/swaps
 silent !mkdir ~/.config/nvim/undo > /dev/null 2>&1
 set undodir=~/.config/nvim/undo
 set undofile
-" }}}
-
-" Environment {{{ 
-" map */+ registers to macOS pastebuffer
 set clipboard=unnamed
-" Disable beeps and flashes
 set noerrorbells visualbell t_vb=
 set encoding=utf-8
-" }}}
-
-" Whitespace handling {{{
 set nowrap
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 set list listchars=tab:»·,trail:·
-" }}}
-
-" Searching {{{
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-" }}}
-
-" Tab completion {{{
-set wildmode=list:longest,list:full
-" set wildmode=list:longest
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*/tmp/*,*.so,*.swp,*.zip
-" }}}
-
-" Gutter Line Numberings {{{
 set rnu
 set nu
 set numberwidth=1
-" }}}
-
-" Enable Mouse in TTY {{{
 if has("mouse")
   set mouse=a
 endif
-" }}}
-
-" Timeout configuration for (e.g.) kj insert mode mapping {{{
 set notimeout
 set ttimeout
 set timeoutlen=20
-" }}}
-
-" (Miscellaneous Settings) {{{
-" allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 set printfont=PragmataPro:h12
 set fillchars+=vert:│
@@ -137,264 +224,4 @@ set nocursorline
 set ruler
 set laststatus=2
 set concealcursor=""
-" write before make
-set autowrite
-" }}}
-
-" }}}
-
-" NeoVim-specific {{{
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-" Neovim takes a different approach to initializing the GUI. As It seems some
-" Syntax and FileType autocmds don't get run all for the first file specified
-" on the command line.  hack sidesteps that and makes sure we get a chance to
-" get started. See https://github.com/neovim/neovim/issues/2953
-augroup nvim
-  au!
-  au VimEnter * doautoa Syntax,FileType
-augroup END
-" }}}
-
-" Syntax Highlighting {{{
-if $TERM_BG == "light"
-  set background=light
-else
-  set background=dark
-endif
-colorscheme gruvbox
-" load the plugin and indent settings for the detected filetype
-filetype plugin indent on
-" }}}
-
-" ## Plugin/Feature Configuration {{{
-
-" Netrw {{{
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
-" }}}
-
-" Supertab {{{
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabClosePreviewOnPopupClose = 1
-" }}}
-
-" Tagbar {{{
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
-
-if executable('ripper-tags')
-    let g:tagbar_type_ruby = {
-                \ 'kinds' : [
-                    \ 'm:modules',
-                    \ 'c:classes',
-                    \ 'f:methods',
-                    \ 'F:singleton methods',
-                    \ 'C:constants',
-                    \ 'a:aliases'
-                \ ],
-                \ 'ctagsbin':  'ripper-tags',
-                \ 'ctagsargs': ['-f', '-']
-                \ }
-endif
-" }}}
-
-" LightLine {{{
-let g:airline_theme='gruvbox'
-let g:airline_powerline_fonts = 1
-" }}}
-
-" Elixir {{{
-nnoremap <silent> <leader>co  :<C-u>CocList outline<CR>
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-nmap <leader>rn <Plug>(coc-rename)
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-" }}}
-
-" FZF {{{
-nnoremap <leader>j :Buffers<cr>
-nnoremap <leader><C-p> :Files<cr>
-nnoremap <leader><C-s> :GFiles?<cr>
-nnoremap <C-p> :GFiles<cr>
-nnoremap <leader>t :Tags<cr>
-nnoremap <leader>T :BTags<cr>
-
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-function! s:update_fzf_colors()
-  let rules =
-  \ { 'fg':      [['Normal',       'fg']],
-    \ 'bg':      [['Normal',       'bg']],
-    \ 'hl':      [['Comment',      'fg']],
-    \ 'fg+':     [['CursorColumn', 'fg'], ['Normal', 'fg']],
-    \ 'bg+':     [['CursorColumn', 'bg']],
-    \ 'hl+':     [['Statement',    'fg']],
-    \ 'info':    [['PreProc',      'fg']],
-    \ 'prompt':  [['Conditional',  'fg']],
-    \ 'pointer': [['Exception',    'fg']],
-    \ 'marker':  [['Keyword',      'fg']],
-    \ 'spinner': [['Label',        'fg']],
-    \ 'header':  [['Comment',      'fg']] }
-  let cols = []
-  for [name, pairs] in items(rules)
-    for pair in pairs
-      let code = synIDattr(synIDtrans(hlID(pair[0])), pair[1])
-      if !empty(name) && code > 0
-        call add(cols, name.':'.code)
-        break
-      endif
-    endfor
-  endfor
-  let s:orig_fzf_default_opts = get(s:, 'orig_fzf_default_opts', $FZF_DEFAULT_OPTS)
-  let $FZF_DEFAULT_OPTS = s:orig_fzf_default_opts .
-        \ empty(cols) ? '' : (' --color='.join(cols, ','))
-endfunction
-
-augroup _fzf
-  autocmd!
-  autocmd ColorScheme * call <sid>update_fzf_colors()
-augroup END
-
-" set shell=/usr/local/bin/zsh
-augroup _term
-  autocmd TermOpen term://* set nonu nornu
-  " autocmd TermOpen term://* startinsert
-augroup END
-
-" }}}
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-" }}}
-
-" }}}
-
-" ## Per-Filetype Configuration {{{
-
-" Makefile {{{
-augroup makefile
-  au!
-  au FileType make set noexpandtab
-augroup END
-" }}}
-
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-
-" highlight occurrences of local on hover
-let g:go_auto_sameids = 0
-
-" type info in statusline
-let g:go_auto_type_info = 1
-
-let g:go_fmt_command = "goimports"
-
-" gometalinter configuration
-let g:go_metalinter_command = ""
-let g:go_metalinter_deadline = "10s"
-let g:go_metalinter_enabled = [
-    \ 'deadcode',
-    \ 'errcheck',
-    \ 'gas',
-    \ 'goconst',
-    \ 'gocyclo',
-    \ 'golint',
-    \ 'ineffassign',
-    \ 'vet',
-    \ 'vetshadow'
-\]
-let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-    " \ 'gosimple',
-" }}}
-
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-
-" Ruby {{{
-let g:ruby_indent_assignment_style = 'variable'
-" }}}
-
-" Miscellaneous (txt,md,lua,js,python,ruby-c) {{{
-augroup misc_mode_extras
-  au!
-  au BufRead,BufNewFile *.lua       set ft=lua
-  au BufRead,BufNewFile *.ronn      set ft=markdown
-  au BufRead,BufNewFile *.json      set ft=javascript
-  au BufRead,BufNewFile Gemfile     set ft=ruby
-  au BufRead,BufNewFile Rakefile    set ft=ruby
-  au BufRead,BufNewFile Vagrantfile set ft=ruby
-  au BufRead,BufNewFile config.ru   set ft=ruby
-  au BufRead,BufNewFile *.rbi       set ft=ruby
-augroup END
-" }}}
-
-" }}}
-
-if has('nvim')
-  " Enable deoplete on startup
-  let g:deoplete#enable_at_startup = 1
-endif
-
-" ## Mappings {{{
-
-" jk = <esc> {{{
-inoremap jk <esc>
-" }}}
-
-
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
-
-let g:terraform_fmt_on_save=1
-
-let g:ale_linters = {'ruby': ['rubocop']}
-let g:ale_fixers = {'ruby': ['rubocop']}
-let g:ale_fix_on_save = 1

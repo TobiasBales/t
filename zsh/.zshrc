@@ -87,6 +87,8 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
+export EDITOR=nvim
+
 if [ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
   source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi

@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-CONFIG_DIRECTORY="${HOME}/projects/TobiasBales/t"
+CONFIG_DIRECTORY="${HOME}/.dotfiles"
 CONFIG_REMOTE=git@github.com:TobiasBales/t.git
 
 set +u

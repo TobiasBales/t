@@ -16,7 +16,7 @@ if [ "${SCRIPT_DIRECTORY}" != "${CONFIG_DIRECTORY}" ]; then
 fi
 
 "${CONFIG_DIRECTORY}/brew/ignite.sh" "${CONFIG_DIRECTORY}"
-"${CONFIG_DIRECTORY}/starship/ignite.sh" "${CONFIG_DIRECTORY}"
+stow starship
 
 if [ ! -d "${HOME}/.oh-my-zsh" ]; then
   echo "Oh my zsh not found, installing"

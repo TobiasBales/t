@@ -17,7 +17,12 @@ fi
 
 "${CONFIG_DIRECTORY}/brew/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/starship/ignite.sh" "${CONFIG_DIRECTORY}"
-"${CONFIG_DIRECTORY}/zsh/ignite.sh" "${CONFIG_DIRECTORY}"
+
+if [ ! -d "${HOME}/.oh-my-zsh" ]; then
+  echo "Oh my zsh not found, installing"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+stow zsh
 "${CONFIG_DIRECTORY}/tmux/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/kitty/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/asdf/ignite.sh" "${CONFIG_DIRECTORY}"

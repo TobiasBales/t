@@ -22,7 +22,7 @@ fi
 "${CONFIG_DIRECTORY}/alacritty/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/kitty/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/asdf/ignite.sh" "${CONFIG_DIRECTORY}"
-stow vim
+stow nvim
 "${CONFIG_DIRECTORY}/qmk/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/git/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/scripts/ignite.sh" "${CONFIG_DIRECTORY}"

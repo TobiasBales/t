@@ -23,6 +23,6 @@ fi
 "${CONFIG_DIRECTORY}/asdf/ignite.sh" "${CONFIG_DIRECTORY}"
 stow nvim
 "${CONFIG_DIRECTORY}/qmk/ignite.sh" "${CONFIG_DIRECTORY}"
-"${CONFIG_DIRECTORY}/git/ignite.sh" "${CONFIG_DIRECTORY}"
+stow git
 "${CONFIG_DIRECTORY}/scripts/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/macos/ignite.sh" "${CONFIG_DIRECTORY}"

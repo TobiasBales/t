@@ -9,6 +9,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'vim-airline/vim-airline'
 Plug 'TimUntersberger/neogit'
@@ -33,6 +34,7 @@ endif
 colorscheme gruvbox
 
 lua <<EOF
+require('telescope').load_extension('fzy_native')
 vim.o.completeopt = "menuone,noselect"
 require'nvim-treesitter.configs'.setup {
   highlight = {

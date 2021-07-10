@@ -8,7 +8,6 @@ if ! command -v brew &> /dev/null; then
 fi
 
 echo "Updating homebrew"
-brew tap heroku/brew
 brew tap homebrew/cask-drivers
 brew tap homebrew/cask-fonts
 brew update
@@ -19,8 +18,6 @@ BREW_PACKAGES=(
   "8bitdo-firmware-updater"
   "8bitdo-ultimate-software"
   "Arkweid/lefthook/lefthook"
-  "act"
-  "alacritty"
   "anki"
   "audio-hijack"
   "autoconf"
@@ -28,7 +25,6 @@ BREW_PACKAGES=(
   "bat"
   "coreutils"
   "diff-so-fancy"
-  "docker-compose"
   "elgato-control-center"
   "elgato-stream-deck"
   "enpass"
@@ -39,7 +35,6 @@ BREW_PACKAGES=(
   "fission"
   "focusrite-control"
   "font-fira-code"
-  "font-jetbrains-mono-nerd-font"
   "fzf"
   "gawk"
   "gh"
@@ -52,7 +47,6 @@ BREW_PACKAGES=(
   "gpg-suite"
   "grep"
   "guitar-pro"
-  "heroku"
   "homebrew/cask/docker"
   "httpie"
   "imagemagick"
@@ -63,23 +57,17 @@ BREW_PACKAGES=(
   "loopback"
   "mediainfo"
   "neovim"
-  "node_exporter"
   "obs"
-  "obsidian"
   "openemu"
   "openscad"
   "openssh"
   "overmind"
   "pinentry-mac"
   "plex"
-  "plexamp"
   "prusaslicer"
   "pwgen"
-  "qfinder-pro"
   "qmk-toolbox"
   "qmk/qmk/qmk"
-  "qsync-client"
-  "raspberry-pi-imager"
   "raycast"
   "reaper"
   "ripgrep"
@@ -102,4 +90,3 @@ BREW_PACKAGES=(
   "zsh-syntax-highlighting"
 )
 brew install "${BREW_PACKAGES[@]}"
-brew services start node_exporter

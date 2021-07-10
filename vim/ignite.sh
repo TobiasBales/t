@@ -12,8 +12,3 @@ if [ ! -L "${HOME}/.config/nvim/init.vim" ]; then
   ln -s "${CONFIG_DIRECTORY}/vim/init.vim" "${HOME}/.config/nvim/init.vim"
 fi
 
-if [ ! -L "${HOME}/.config/nvim/coc-settings.json" ]; then
-  echo "coc config not found, linking"
-  mkdir -p "${HOME}/.config/nvim"
-  ln -s "${CONFIG_DIRECTORY}/vim/coc-settings.json" "${HOME}/.config/nvim/coc-settings.json"
-fi

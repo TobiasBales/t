@@ -2,6 +2,19 @@
 
 set -euo pipefail
 
+CONFIG_PATH=$(dirname "${0}")
+LAST_RUN_FILE="${CONFIG_PATH}/.last_run_macos_settings"
+if ! [ -f "${LAST_RUN_FILE}" ]; then
+  date +%s > "${LAST_RUN_FILE}"
+fi
+LAST_RUN=$(cat "${LAST_RUN_FILE}")
+LAST_CHANGE=$(stat -f "%m" "${0}")
+
+if [[ "${LAST_CHANGE}" -le ${LAST_RUN} ]]; then
+  exit 0
+fi
+date +%s > "${LAST_RUN_FILE}"
+
 echo "Enforcing macos settings"
 # auto hide dock, quickly
 defaults write com.apple.dock autohide -int 1

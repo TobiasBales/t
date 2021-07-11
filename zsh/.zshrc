@@ -133,7 +133,7 @@ if [ -f "${HOME}/.secrets.zsh" ]; then
   source "${HOME}/.secrets.zsh"
 fi
 
-$HOME/projects/TobiasBales/t/update.sh
+$HOME/.dotfiles/update.sh
 
 if [ -z "${TMUX}" ]; then
   t
@@ -151,5 +151,5 @@ function pristineRepository() {
   fi
 }
 
-pristineRepository "${HOME}/projects/TobiasBales/t" "main" "dotfiles"
+pristineRepository "${HOME}/.dotfiles" "main" "dotfiles"
 pristineRepository "${HOME}/projects/TobiasBales/qmk_firmware" "master" "qmk_firmware"

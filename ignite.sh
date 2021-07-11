@@ -34,5 +34,4 @@ if [ ! -d "${HOME}/.tmux/plugins/tpm" ]; then
 fi
 "${CONFIG_DIRECTORY}/asdf/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/qmk/ignite.sh" "${CONFIG_DIRECTORY}"
-"${CONFIG_DIRECTORY}/scripts/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/macos/ignite.sh" "${CONFIG_DIRECTORY}"

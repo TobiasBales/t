@@ -2,6 +2,22 @@
 
 set -euo pipefail
 
+CONFIG_PATH=$(dirname "${0}")
+LAST_RUN_FILE="${CONFIG_PATH}/.last_run_asdf"
+if ! [ -f "${LAST_RUN_FILE}" ]; then
+  date +%s > "${LAST_RUN_FILE}"
+fi
+LAST_RUN=$(cat "${LAST_RUN_FILE}")
+NOW=$(date +%s)
+TIME_SINCE_LAST_UPDATE="$((NOW-LAST_RUN))"
+TIME_BETWEEN_UPDATES=$((60*60*24))
+LAST_CHANGE=$(stat -f "%m" "${0}")
+
+if [[ "${TIME_SINCE_LAST_UPDATE}" -le ${TIME_BETWEEN_UPDATES} ]] && [[ "${LAST_CHANGE}" -le ${LAST_RUN} ]]; then
+  exit 0
+fi
+date +%s > "${LAST_RUN_FILE}"
+
 if [ ! -d "${HOME}/.asdf" ]; then
   echo "asdf not found, installing"
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0

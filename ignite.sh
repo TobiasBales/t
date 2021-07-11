@@ -16,15 +16,14 @@ if [ "${SCRIPT_DIRECTORY}" != "${CONFIG_DIRECTORY}" ]; then
 fi
 
 "${CONFIG_DIRECTORY}/brew/ignite.sh" "${CONFIG_DIRECTORY}"
-stow starship
-stow kitty
 
 if [ ! -d "${HOME}/.oh-my-zsh" ]; then
   echo "Oh my zsh not found, installing"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
+stow starship
+stow kitty
 stow zsh
-"${CONFIG_DIRECTORY}/tmux/ignite.sh" "${CONFIG_DIRECTORY}"
 stow tmux
 stow nvim
 stow git
@@ -34,8 +33,6 @@ if [ ! -d "${HOME}/.tmux/plugins/tpm" ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 "${CONFIG_DIRECTORY}/asdf/ignite.sh" "${CONFIG_DIRECTORY}"
-stow nvim
 "${CONFIG_DIRECTORY}/qmk/ignite.sh" "${CONFIG_DIRECTORY}"
-stow git
 "${CONFIG_DIRECTORY}/scripts/ignite.sh" "${CONFIG_DIRECTORY}"
 "${CONFIG_DIRECTORY}/macos/ignite.sh" "${CONFIG_DIRECTORY}"
